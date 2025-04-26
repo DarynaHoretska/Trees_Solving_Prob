@@ -8,14 +8,11 @@ def pre_order(node):
 def in_order(node):
     if node is None:
         return []
-    prereverse = pre_order(node.right)
-    reverse = prereverse[::-1]
-    return pre_order(node.left) + [node.data] + reverse
+    return in_order(node.left) + [node.data] + in_order(node.right)
 
 # Post-order traversal
 def post_order(node):
     if node is None:
         return []
-    prereverse = pre_order(node.right)
-    reverse = prereverse[::-1]
-    return pre_order(node.left) + reverse + [node.data]
+    return post_order(node.left) + post_order(node.right) + [node.data]
+
